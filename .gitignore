@@ -7,3 +7,6 @@ export/
 
 # Gemini
 GEMINI.md
+
+# env
+.env
