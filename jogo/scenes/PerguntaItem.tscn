@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8x8x8x8x8x8x"]
+
+[ext_resource type="Script" path="res://scripts/PerguntaItem.gd" id="1_script"]
+
+[node name="PerguntaItem" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+script = ExtResource("1_script")
+
+[node name="Enunciado" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enunciado da pergunta que pode ser cortado se for muito grande..."
+vertical_alignment = 1
+clip_text = true
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 2
+text = "[Ativa]"
+vertical_alignment = 1
+
+[node name="EditButton" type="Button" parent="."]
+layout_mode = 2
+text = " Editar "
+
+[node name="DeleteButton" type="Button" parent="."]
+layout_mode = 2
+text = " Excluir "
+
+[connection signal="pressed" from="EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]

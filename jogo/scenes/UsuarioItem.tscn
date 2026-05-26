@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c10x10x10x10x10x"]
+
+[ext_resource type="Script" path="res://scripts/UsuarioItem.gd" id="1_script"]
+
+[node name="UsuarioItem" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+script = ExtResource("1_script")
+
+[node name="Nome" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nome do Usuário"
+vertical_alignment = 1
+clip_text = true
+
+[node name="Email" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "email@institucional.edu"
+vertical_alignment = 1
+clip_text = true
+
+[node name="Role" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "[ALUNO]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoleButton" type="Button" parent="."]
+layout_mode = 2
+text = " Alterar Role "
+
+[node name="ChairButton" type="Button" parent="."]
+layout_mode = 2
+text = " Associar Cadeira "
+
+[connection signal="pressed" from="RoleButton" to="." method="_on_role_button_pressed"]
+[connection signal="pressed" from="ChairButton" to="." method="_on_chair_button_pressed"]

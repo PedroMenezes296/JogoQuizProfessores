@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1x1x1x1x1x1x"]
+
+[ext_resource type="Script" path="res://scripts/Login.gd" id="1_script"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quiz Professores"
+horizontal_alignment = 1
+
+[node name="EmailInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "E-mail Institucional"
+
+[node name="SenhaInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Senha"
+secret = true
+
+[node name="LoginButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Entrar"
+
+[node name="CadastroButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Criar Conta"
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.333333, 0.333333, 1)
+text = "Mensagem de Erro"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CadastroButton" to="." method="_on_cadastro_button_pressed"]

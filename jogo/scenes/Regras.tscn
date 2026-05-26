@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://c13x13x13x13x13x"]
+
+[ext_resource type="Script" path="res://scripts/Regras.gd" id="1_script"]
+
+[node name="Regras" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VoltarButton" type="Button" parent="VBoxContainer/HBox"]
+layout_mode = 2
+text = " < Menu "
+
+[node name="Titulo" type="Label" parent="VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Como Jogar"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b]Objetivo:[/b]
+Responda corretamente as perguntas do professor para obter a maior pontuação possível.
+
+[b]Dinâmica:[/b]
+1. Selecione uma cadeira (disciplina).
+2. Você terá 10 perguntas aleatórias.
+3. Você tem 15 segundos para responder cada pergunta.
+
+[b]Pontuação:[/b]
+- [color=green]10 pontos[/color] por resposta correta.
+- [color=yellow]Bônus de 5 pontos[/color] se responder em menos de 5 segundos.
+
+[b]Reações do Professor:[/b]
+- [b]Normal:[/b] O professor aguarda sua resposta.
+- [b]Feliz:[/b] O professor comemora seu acerto!
+- [b]Bravo:[/b] O professor fica decepcionado com o erro ou falta de tempo.
+
+[b]Ranking:[/b]
+Sua pontuação final será registrada e você poderá ver sua posição no ranking global da disciplina. O critério de desempate é o menor tempo total."
+
+[connection signal="pressed" from="VBoxContainer/HBox/VoltarButton" to="." method="_on_voltar_button_pressed"]

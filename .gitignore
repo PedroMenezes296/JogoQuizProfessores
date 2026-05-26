@@ -1,0 +1,9 @@
+# Godot
+.godot/
+.import/
+
+# Builds
+export/
+
+# Gemini
+GEMINI.md

@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Quiz dos Professores"
+config/description="Jogo de perguntas e respostas estilo quiz com visual pixel art."
+run/main_scene="res://scenes/Login.tscn"
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://dg6qisycv5i2k"
+config/icon="uid://dg6qisycv5i2k"
+
+[autoload]
+
+HTTPManager="*res://autoloads/HTTPManager.gd"
+AuthManager="*res://autoloads/AuthManager.gd"
+SceneManager="*res://autoloads/SceneManager.gd"
+GameManager="*res://autoloads/GameManager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Quiz dos Professores"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

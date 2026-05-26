@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3 uid="uid://c9x9x9x9x9x9x"]
+
+[ext_resource type="Script" path="res://scripts/PainelProfessor.gd" id="1_script"]
+
+[node name="PainelProfessor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VoltarButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " < Menu "
+
+[node name="Titulo" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Gerenciar Perguntas"
+horizontal_alignment = 1
+
+[node name="NovaPerguntaBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " + Nova Pergunta "
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Status..."
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestionsList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="FormPopup" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FormPopup"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Dados da Pergunta"
+horizontal_alignment = 1
+
+[node name="EnunciadoInput" type="TextEdit" parent="FormPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Enunciado da pergunta"
+wrap_mode = 1
+
+[node name="AInput" type="LineEdit" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Opção A"
+
+[node name="BInput" type="LineEdit" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Opção B"
+
+[node name="CInput" type="LineEdit" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Opção C"
+
+[node name="DInput" type="LineEdit" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Opção D"
+
+[node name="HBox" type="HBoxContainer" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FormPopup/VBoxContainer/HBox"]
+layout_mode = 2
+text = "Resposta Correta: "
+
+[node name="RespostaSelect" type="OptionButton" parent="FormPopup/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+popup/item_0/text = "Opção A"
+popup/item_0/id = 0
+popup/item_1/text = "Opção B"
+popup/item_1/id = 1
+popup/item_2/text = "Opção C"
+popup/item_2/id = 2
+popup/item_3/text = "Opção D"
+popup/item_3/id = 3
+
+[node name="HSeparator" type="HSeparator" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SALVAR"
+
+[node name="CancelButton" type="Button" parent="FormPopup/VBoxContainer"]
+layout_mode = 2
+text = "Cancelar"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VoltarButton" to="." method="_on_voltar_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NovaPerguntaBtn" to="." method="_on_nova_pergunta_pressed"]
+[connection signal="pressed" from="FormPopup/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="FormPopup/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

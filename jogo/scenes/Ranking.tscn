@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://c12x12x12x12x12x"]
+
+[ext_resource type="Script" path="res://scripts/Ranking.gd" id="1_script"]
+
+[node name="Ranking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VoltarButton" type="Button" parent="VBoxContainer/HBox"]
+layout_mode = 2
+text = " < Menu "
+
+[node name="Titulo" type="Label" parent="VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Ranking de Professores"
+horizontal_alignment = 1
+
+[node name="ChairOption" type="OptionButton" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Pos" type="Label" parent="VBoxContainer/Header"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Pos"
+
+[node name="Nome" type="Label" parent="VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nome"
+
+[node name="Acertos" type="Label" parent="VBoxContainer/Header"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Acertos"
+horizontal_alignment = 1
+
+[node name="Tempo" type="Label" parent="VBoxContainer/Header"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Tempo"
+horizontal_alignment = 1
+
+[node name="Pontos" type="Label" parent="VBoxContainer/Header"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Pontuação"
+horizontal_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Carregando..."
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RankingList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[connection signal="pressed" from="VBoxContainer/HBox/VoltarButton" to="." method="_on_voltar_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBox/ChairOption" to="." method="_on_chair_selected"]
