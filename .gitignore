@@ -8,5 +8,9 @@ export/
 # Gemini
 GEMINI.md
 
+# claude
+CLAUDE.md
+.claudeignore
+
 # env
 .env

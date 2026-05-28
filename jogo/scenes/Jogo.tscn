@@ -1,7 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6x6x6x6x6x6x"]
+[gd_scene load_steps=5 format=3 uid="uid://c6x6x6x6x6x6x"]
 
 [ext_resource type="Script" path="res://scripts/Jogo.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://icon" path="res://icon.svg" id="2_prof_sprite"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_question_card"]
+bg_color = Color(0.98, 0.97, 0.93, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.5, 0.38, 0.7)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_answer_btn"]
+bg_color = Color(0.157, 0.376, 0.639, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.482, 0.686, 0.969, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
 
 [node name="Jogo" type="Control"]
 layout_mode = 3
@@ -20,112 +52,186 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Parede" type="ColorRect" parent="Background"]
+[node name="BgBase" type="ColorRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.439216, 0.329412, 0.239216, 1)
+color = Color(0.925, 0.894, 0.831, 1)
+
+[node name="BgTeto" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1280.0
+offset_bottom = 55.0
+color = Color(0.847, 0.8, 0.714, 1)
+
+[node name="BgTetoBorda" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 53.0
+offset_right = 1280.0
+offset_bottom = 58.0
+color = Color(0.714, 0.651, 0.545, 1)
+
+[node name="BgPiso" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 625.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.553, 0.431, 0.388, 1)
+
+[node name="BgPisoBorda" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 623.0
+offset_right = 1280.0
+offset_bottom = 628.0
+color = Color(0.365, 0.255, 0.196, 1)
+
+[node name="BgQuadroMoldura" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 42.0
+offset_right = 560.0
+offset_bottom = 600.0
+color = Color(0.306, 0.196, 0.098, 1)
 
 [node name="Quadro" type="ColorRect" parent="Background"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -500.0
-offset_top = 40.0
-offset_right = 500.0
-offset_bottom = 440.0
-grow_horizontal = 2
-color = Color(0, 0.301961, 0, 1)
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 52.0
+offset_right = 550.0
+offset_bottom = 590.0
+color = Color(0, 0.302, 0, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="QuestionCard" type="Panel" parent="UI"]
-offset_left = 180.0
-offset_top = 60.0
-offset_right = 1100.0
-offset_bottom = 420.0
-
-[node name="Enunciado" type="Label" parent="UI/QuestionCard"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "Enunciado da pergunta que pode ser bem longo e ocupar várias linhas do quadro."
-autowrap_mode = 3
-
-[node name="Opcoes" type="GridContainer" parent="UI/QuestionCard"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 30.0
-offset_bottom = 230.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 2
-
-[node name="BtnA" type="Button" parent="UI/QuestionCard/Opcoes"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "A) Opção A"
-
-[node name="BtnB" type="Button" parent="UI/QuestionCard/Opcoes"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "B) Opção B"
-
-[node name="BtnC" type="Button" parent="UI/QuestionCard/Opcoes"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "C) Opção C"
-
-[node name="BtnD" type="Button" parent="UI/QuestionCard/Opcoes"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "D) Opção D"
 
 [node name="TimerLabel" type="Label" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -150.0
-offset_top = 20.0
+offset_left = -210.0
+offset_top = 10.0
 offset_right = -20.0
-offset_bottom = 60.0
+offset_bottom = 52.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 28
-text = "Tempo: 15"
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.2, 0.1, 0.0, 1)
+text = "⏱ 15"
 horizontal_alignment = 2
 
+[node name="PlacarLabel" type="Label" parent="UI"]
+offset_left = 590.0
+offset_top = 10.0
+offset_right = 1040.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.2, 0.15, 0.05, 1)
+text = "Pergunta 1 / 10  |  Acertos: 0"
+horizontal_alignment = 1
+
+[node name="QuestionCard" type="Panel" parent="UI"]
+offset_left = 590.0
+offset_top = 58.0
+offset_right = 1265.0
+offset_bottom = 680.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_question_card")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/QuestionCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Enunciado" type="Label" parent="UI/QuestionCard/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 160)
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(0.12, 0.08, 0.02, 1)
+text = "Enunciado da pergunta aparece aqui."
+autowrap_mode = 3
+
+[node name="HSep" type="HSeparator" parent="UI/QuestionCard/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.6, 0.5, 0.38, 0.5)
+
+[node name="Opcoes" type="GridContainer" parent="UI/QuestionCard/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="BtnA" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+text = "A) Opção A"
+autowrap_mode = 3
+
+[node name="BtnB" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+text = "B) Opção B"
+autowrap_mode = 3
+
+[node name="BtnC" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+text = "C) Opção C"
+autowrap_mode = 3
+
+[node name="BtnD" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+text = "D) Opção D"
+autowrap_mode = 3
+
 [node name="Professor" type="Sprite2D" parent="."]
-position = Vector2(100, 600)
+position = Vector2(286, 400)
 scale = Vector2(2, 2)
 texture = ExtResource("2_prof_sprite")
 hframes = 3
 
 [node name="BalaoFala" type="Panel" parent="Professor"]
-offset_left = 40.0
-offset_top = -120.0
-offset_right = 240.0
-offset_bottom = -40.0
+offset_left = 20.0
+offset_top = -90.0
+offset_right = 185.0
+offset_bottom = -20.0
 
 [node name="Label" type="Label" parent="Professor/BalaoFala"]
 layout_mode = 1
@@ -134,6 +240,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 13
 text = "Muito bem!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -142,8 +249,8 @@ autowrap_mode = 3
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="UI/QuestionCard/Opcoes/BtnA" to="." method="_on_opcao_pressed" binds= [0]]
-[connection signal="pressed" from="UI/QuestionCard/Opcoes/BtnB" to="." method="_on_opcao_pressed" binds= [1]]
-[connection signal="pressed" from="UI/QuestionCard/Opcoes/BtnC" to="." method="_on_opcao_pressed" binds= [2]]
-[connection signal="pressed" from="UI/QuestionCard/Opcoes/BtnD" to="." method="_on_opcao_pressed" binds= [3]]
+[connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnA" to="." method="_on_opcao_pressed" binds= [0]]
+[connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnB" to="." method="_on_opcao_pressed" binds= [1]]
+[connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnC" to="." method="_on_opcao_pressed" binds= [2]]
+[connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnD" to="." method="_on_opcao_pressed" binds= [3]]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

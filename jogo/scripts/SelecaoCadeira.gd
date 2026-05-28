@@ -34,10 +34,10 @@ func _on_cadeira_selected(cadeira_data):
 	var body = response[3]
 
 	if response_code == 200:
-		if body.size() >= 1:
+		if body.size() > 0:
 			GameManager.start_game(cadeira_data, body)
 		else:
-			loading_label.text = "Esta cadeira ainda não possui perguntas suficientes."
+			loading_label.text = "Nenhuma pergunta cadastrada nesta cadeira ainda."
 	else:
 		loading_label.text = "Erro ao buscar perguntas."
 

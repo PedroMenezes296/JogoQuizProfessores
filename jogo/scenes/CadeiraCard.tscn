@@ -1,25 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4x4x4x4x4x4x"]
+[gd_scene load_steps=3 format=3 uid="uid://c4x4x4x4x4x4x"]
 
 [ext_resource type="Script" path="res://scripts/CadeiraCard.gd" id="1_script"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_border"]
+bg_color = Color(0.22, 0.16, 0.08, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.502, 0.376, 0.196, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="CadeiraCard" type="PanelContainer"]
-custom_minimum_size = Vector2(250, 300)
-offset_right = 250.0
-offset_bottom = 300.0
+custom_minimum_size = Vector2(260, 320)
+offset_right = 260.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_border")
 script = ExtResource("1_script")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 0
 
 [node name="CorRect" type="ColorRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
-color = Color(0, 0.301961, 0, 1)
+color = Color(0, 0.302, 0, 1)
+
+[node name="NomeFundo" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+color = Color(0.149, 0.098, 0.039, 1)
 
 [node name="NomeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1.0, 0.929, 0.714, 1)
 text = "Nome da Cadeira"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -27,7 +46,9 @@ autowrap_mode = 3
 [node name="DescricaoLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Descrição curta da cadeira e o que será aprendido."
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.74, 0.62, 0.9)
+text = "Descrição curta da cadeira."
 horizontal_alignment = 1
 autowrap_mode = 3
 

@@ -1,6 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1x1x1x1x1x1x"]
+[gd_scene load_steps=6 format=3 uid="uid://c1x1x1x1x1x1x"]
 
 [ext_resource type="Script" path="res://scripts/Login.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.059, 0.204, 0.376, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.914, 0.271, 0.376, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_login"]
+bg_color = Color(0.914, 0.271, 0.376, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_cadastro"]
+bg_color = Color(0.078, 0.157, 0.267, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.914, 0.271, 0.376, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.047, 0.118, 0.22, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.302, 0.498, 0.776, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -11,49 +66,197 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
+[node name="BgCeu" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.102, 0.102, 0.18, 1)
+
+[node name="BgPredio" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 130.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.086, 0.129, 0.243, 1)
+
+[node name="BgCalcada" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 645.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.227, 0.227, 0.227, 1)
+
+[node name="BgDegrau" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 638.0
+offset_right = 1280.0
+offset_bottom = 648.0
+color = Color(0.322, 0.322, 0.322, 1)
+
+[node name="Janela_L1" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 195.0
+offset_right = 152.0
+offset_bottom = 265.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_L2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 182.0
+offset_top = 195.0
+offset_right = 272.0
+offset_bottom = 265.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_L3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 315.0
+offset_right = 152.0
+offset_bottom = 385.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_L4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 182.0
+offset_top = 315.0
+offset_right = 272.0
+offset_bottom = 385.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_R1" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 897.0
+offset_top = 195.0
+offset_right = 987.0
+offset_bottom = 265.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_R2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1017.0
+offset_top = 195.0
+offset_right = 1107.0
+offset_bottom = 265.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_R3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 897.0
+offset_top = 315.0
+offset_right = 987.0
+offset_bottom = 385.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="Janela_R4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1017.0
+offset_top = 315.0
+offset_right = 1107.0
+offset_bottom = 385.0
+color = Color(1.0, 0.859, 0.302, 1)
+
+[node name="CardFundo" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 398.0
+offset_top = 158.0
+offset_right = 882.0
+offset_bottom = 562.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+offset_left = -230.0
+offset_top = -175.0
+offset_right = 230.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
 
 [node name="Titulo" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quiz Professores"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.914, 0.271, 0.376, 1)
+text = "QUIZ DOS PROFESSORES"
 horizontal_alignment = 1
+
+[node name="SubTitulo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 1)
+text = "Faça login para continuar"
+horizontal_alignment = 1
+
+[node name="HSep" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.914, 0.271, 0.376, 0.5)
 
 [node name="EmailInput" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.58, 0.78, 1)
 placeholder_text = "E-mail Institucional"
 
 [node name="SenhaInput" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.58, 0.78, 1)
 placeholder_text = "Senha"
 secret = true
 
 [node name="LoginButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Entrar"
+custom_minimum_size = Vector2(0, 48)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_login")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "ENTRAR"
 
 [node name="CadastroButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Criar Conta"
+custom_minimum_size = Vector2(0, 44)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_cadastro")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.75, 0.85, 1.0, 1)
+text = "Não tem conta? Criar conta"
 
 [node name="ErrorLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.333333, 0.333333, 1)
-text = "Mensagem de Erro"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+text = ""
 horizontal_alignment = 1
 autowrap_mode = 3
 
