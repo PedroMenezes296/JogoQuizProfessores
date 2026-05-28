@@ -15,4 +15,4 @@ CLAUDE.md
 # env
 .env
 
-./backend/database/seed.py
+backend/database/seed.py
