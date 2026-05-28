@@ -1,14 +1,15 @@
 import os
 from supabase import create_client
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_URL = "https://alonggxaumhxpcaqjaig.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsb25nZ3hhdW1oeHBjYXFqYWlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1MzA0MzMsImV4cCI6MjA5NTEwNjQzM30.3p0sJ-piGBy_-FenU-Vvw3gSdcLeHiCX5LvAlOcPW44"
+SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsb25nZ3hhdW1oeHBjYXFqYWlnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTUzMDQzMywiZXhwIjoyMDk1MTA2NDMzfQ.QnDR9a0z8ILV0XyiFFH-GVJ0kIuwTJClhJkAfPesMUQ"
 
-if not SUPABASE_URL or not SUPABASE_KEY:
-    print("Erro: SUPABASE_URL e SUPABASE_KEY devem estar definidas.")
+if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
+    print("Erro: SUPABASE_URL e SUPABASE_SERVICE_KEY devem estar definidas.")
     exit(1)
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
 
 def seed():
@@ -268,6 +269,7 @@ def seed():
     ]
 
     def inserir_perguntas(perguntas, cadeira_id, nome_cadeira):
+        print(f"\nInserindo perguntas — {nome_cadeira}:")
         for p in perguntas:
             p_com_id = dict(p, cadeira_id=cadeira_id, ativa=True)
             exists = supabase.table("perguntas").select("id").eq("enunciado", p["enunciado"]).execute()
@@ -277,7 +279,6 @@ def seed():
             else:
                 print(f"  [=] Já existe: {p['enunciado'][:60]}...")
 
-    print(f"\nInserindo perguntas — {nome_cadeira}:")
     inserir_perguntas(redes_perguntas, redes_id, "Redes de Computadores")
     print(f"\nInserindo perguntas — Engenharia de Software:")
     inserir_perguntas(eng_perguntas, eng_id, "Engenharia de Software")
