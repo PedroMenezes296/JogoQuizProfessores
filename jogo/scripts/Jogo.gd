@@ -1,28 +1,35 @@
 extends Control
 
-@onready var quadro_rect = $Background/Quadro
 @onready var enunciado_label = $UI/QuestionCard/VBoxContainer/Enunciado
 @onready var opcoes_container = $UI/QuestionCard/VBoxContainer/Opcoes
-@onready var timer_label = $UI/TimerLabel
 @onready var placar_label = $UI/PlacarLabel
-@onready var timer_node = $Timer
 @onready var professor_sprite = $Professor
 @onready var balao_fala = $Professor/BalaoFala
 @onready var frase_label = $Professor/BalaoFala/Label
 
 var current_question: Dictionary
-var time_left: float = 15.0
 var can_answer: bool = false
 var question_start_time: float = 0.0
+
+var professor_textures: Dictionary = {}
 
 var frases_feliz = ["Muito bem!", "Exato!", "Você estudou!", "Parabéns!", "Boa resposta!"]
 var frases_bravo = ["Preste atenção!", "Quase lá...", "Estude mais!", "Incorreto!", "Reveja a matéria!"]
 
 func _ready():
-	var cadeira = GameManager.selected_cadeira
-	quadro_rect.color = Color.from_string(cadeira.get("cor_quadro", "#004d00"), Color.DARK_GREEN)
 	balao_fala.visible = false
+	_carregar_texturas_professor()
 	load_question()
+
+func _carregar_texturas_professor():
+	var id = GameManager.selected_cadeira.get("id", 1)
+	for estado in ["normal", "feliz", "bravo"]:
+		var path_jpg = "res://assets/professores/professor_%d_%s.jpg" % [id, estado]
+		var path_png = "res://assets/professores/professor_%d_%s.png" % [id, estado]
+		if ResourceLoader.exists(path_jpg):
+			professor_textures[estado] = load(path_jpg)
+		elif ResourceLoader.exists(path_png):
+			professor_textures[estado] = load(path_png)
 
 func load_question():
 	current_question = GameManager.get_current_question()
@@ -45,30 +52,19 @@ func load_question():
 	var atual = GameManager.current_question_index + 1
 	placar_label.text = "Pergunta %d / %d  |  Acertos: %d" % [atual, total, GameManager.acertos]
 
-	time_left = 15.0
 	can_answer = true
 	question_start_time = Time.get_ticks_msec() / 1000.0
-	professor_sprite.frame = 0
+	if professor_textures.has("normal"):
+		professor_sprite.texture = professor_textures["normal"]
 	balao_fala.visible = false
-	timer_node.start()
-
-func _process(delta):
-	if can_answer:
-		time_left -= delta
-		timer_label.text = "⏱ %d" % ceil(time_left)
-		if time_left <= 0:
-			_on_timer_timeout()
 
 func _on_opcao_pressed(opcao_index: int):
 	if not can_answer:
 		return
 
 	can_answer = false
-	timer_node.stop()
 
-	var resposta_escolhida = ""
-	if opcao_index >= 0:
-		resposta_escolhida = ["a", "b", "c", "d"][opcao_index]
+	var resposta_escolhida = ["a", "b", "c", "d"][opcao_index]
 	var acertou = (resposta_escolhida == current_question.resposta_correta)
 
 	var tempo_gasto = (Time.get_ticks_msec() / 1000.0) - question_start_time
@@ -76,10 +72,12 @@ func _on_opcao_pressed(opcao_index: int):
 
 	if acertou:
 		GameManager.acertos += 1
-		professor_sprite.frame = 1
+		if professor_textures.has("feliz"):
+			professor_sprite.texture = professor_textures["feliz"]
 		frase_label.text = frases_feliz.pick_random()
 	else:
-		professor_sprite.frame = 2
+		if professor_textures.has("bravo"):
+			professor_sprite.texture = professor_textures["bravo"]
 		frase_label.text = frases_bravo.pick_random()
 
 	balao_fala.visible = true
@@ -90,11 +88,6 @@ func _on_opcao_pressed(opcao_index: int):
 		load_question()
 	else:
 		finish_game()
-
-func _on_timer_timeout():
-	if not can_answer:
-		return
-	_on_opcao_pressed(-1)
 
 func finish_game():
 	SceneManager.change_scene("res://scenes/Resultado.tscn")

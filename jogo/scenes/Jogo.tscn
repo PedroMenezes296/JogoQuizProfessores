@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6x6x6x6x6x6x"]
+[gd_scene format=3 uid="uid://c6x6x6x6x6x6x"]
 
-[ext_resource type="Script" path="res://scripts/Jogo.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://icon" path="res://icon.svg" id="2_prof_sprite"]
+[ext_resource type="Script" uid="uid://dvputof2c1ln0" path="res://scripts/Jogo.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dliocmdf503na" path="res://assets/salas/SalaDeAula.jpg" id="2_sala_bg"]
+[ext_resource type="Texture2D" uid="uid://bw7pa3h3ml0rg" path="res://assets/professores/professor_1_normal.png" id="3_6il6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_question_card"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
 bg_color = Color(0.98, 0.97, 0.93, 0.97)
 border_width_left = 1
 border_width_top = 1
@@ -14,12 +19,12 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-content_margin_left = 15.0
-content_margin_top = 15.0
-content_margin_right = 15.0
-content_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_answer_btn"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
 bg_color = Color(0.157, 0.376, 0.639, 0.9)
 border_width_left = 1
 border_width_top = 1
@@ -30,12 +35,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-content_margin_left = 10.0
-content_margin_top = 8.0
-content_margin_right = 10.0
-content_margin_bottom = 8.0
 
-[node name="Jogo" type="Control"]
+[node name="Jogo" type="Control" unique_id=955870037]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="Control" parent="."]
+[node name="Background" type="Control" parent="." unique_id=1137588303]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,103 +53,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BgBase" type="ColorRect" parent="Background"]
+[node name="SalaFundo" type="TextureRect" parent="Background" unique_id=1622944680]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.925, 0.894, 0.831, 1)
+texture = ExtResource("2_sala_bg")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="BgTeto" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 1280.0
-offset_bottom = 55.0
-color = Color(0.847, 0.8, 0.714, 1)
+[node name="UI" type="CanvasLayer" parent="." unique_id=1189808102]
 
-[node name="BgTetoBorda" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 0.0
-offset_top = 53.0
-offset_right = 1280.0
-offset_bottom = 58.0
-color = Color(0.714, 0.651, 0.545, 1)
-
-[node name="BgPiso" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 0.0
-offset_top = 625.0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.553, 0.431, 0.388, 1)
-
-[node name="BgPisoBorda" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 0.0
-offset_top = 623.0
-offset_right = 1280.0
-offset_bottom = 628.0
-color = Color(0.365, 0.255, 0.196, 1)
-
-[node name="BgQuadroMoldura" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 42.0
-offset_right = 560.0
-offset_bottom = 600.0
-color = Color(0.306, 0.196, 0.098, 1)
-
-[node name="Quadro" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 22.0
-offset_top = 52.0
-offset_right = 550.0
-offset_bottom = 590.0
-color = Color(0, 0.302, 0, 1)
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="TimerLabel" type="Label" parent="UI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -210.0
+[node name="PlacarLabel" type="Label" parent="UI" unique_id=887649661]
+offset_left = 10.0
 offset_top = 10.0
-offset_right = -20.0
+offset_right = 455.0
 offset_bottom = 52.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 26
-theme_override_colors/font_color = Color(0.2, 0.1, 0.0, 1)
-text = "⏱ 15"
-horizontal_alignment = 2
-
-[node name="PlacarLabel" type="Label" parent="UI"]
-offset_left = 590.0
-offset_top = 10.0
-offset_right = 1040.0
-offset_bottom = 52.0
-theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.2, 0.15, 0.05, 1)
+theme_override_font_sizes/font_size = 16
 text = "Pergunta 1 / 10  |  Acertos: 0"
 horizontal_alignment = 1
 
-[node name="QuestionCard" type="Panel" parent="UI"]
-offset_left = 590.0
+[node name="QuestionCard" type="Panel" parent="UI" unique_id=1435467607]
+offset_left = 10.0
 offset_top = 58.0
-offset_right = 1265.0
-offset_bottom = 680.0
+offset_right = 455.0
+offset_bottom = 710.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_question_card")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/QuestionCard"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/QuestionCard" unique_id=157841646]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,79 +96,79 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="Enunciado" type="Label" parent="UI/QuestionCard/VBoxContainer"]
+[node name="Enunciado" type="Label" parent="UI/QuestionCard/VBoxContainer" unique_id=2040252351]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 3
-custom_minimum_size = Vector2(0, 160)
-theme_override_font_sizes/font_size = 19
 theme_override_colors/font_color = Color(0.12, 0.08, 0.02, 1)
+theme_override_font_sizes/font_size = 19
 text = "Enunciado da pergunta aparece aqui."
 autowrap_mode = 3
 
-[node name="HSep" type="HSeparator" parent="UI/QuestionCard/VBoxContainer"]
+[node name="HSep" type="HSeparator" parent="UI/QuestionCard/VBoxContainer" unique_id=674715304]
 layout_mode = 2
-theme_override_colors/separator_color = Color(0.6, 0.5, 0.38, 0.5)
 
-[node name="Opcoes" type="GridContainer" parent="UI/QuestionCard/VBoxContainer"]
+[node name="Opcoes" type="GridContainer" parent="UI/QuestionCard/VBoxContainer" unique_id=451871612]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="BtnA" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+[node name="BtnA" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes" unique_id=518145945]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
 text = "A) Opção A"
 autowrap_mode = 3
 
-[node name="BtnB" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+[node name="BtnB" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes" unique_id=114154862]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
 text = "B) Opção B"
 autowrap_mode = 3
 
-[node name="BtnC" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+[node name="BtnC" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes" unique_id=2049877382]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
 text = "C) Opção C"
 autowrap_mode = 3
 
-[node name="BtnD" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes"]
+[node name="BtnD" type="Button" parent="UI/QuestionCard/VBoxContainer/Opcoes" unique_id=943028246]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_answer_btn")
 text = "D) Opção D"
 autowrap_mode = 3
 
-[node name="Professor" type="Sprite2D" parent="."]
-position = Vector2(286, 400)
-scale = Vector2(2, 2)
-texture = ExtResource("2_prof_sprite")
-hframes = 3
+[node name="Professor" type="Sprite2D" parent="." unique_id=2055019513]
+position = Vector2(983, 353)
+scale = Vector2(0.578, 0.597)
+skew = 0.0
+texture = ExtResource("3_6il6t")
+offset = Vector2(0.1, 0.5)
 
-[node name="BalaoFala" type="Panel" parent="Professor"]
+[node name="BalaoFala" type="Panel" parent="Professor" unique_id=1298975499]
 offset_left = 20.0
 offset_top = -90.0
 offset_right = 185.0
 offset_bottom = -20.0
 
-[node name="Label" type="Label" parent="Professor/BalaoFala"]
+[node name="Label" type="Label" parent="Professor/BalaoFala" unique_id=474582091]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,11 +181,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnA" to="." method="_on_opcao_pressed" binds= [0]]
 [connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnB" to="." method="_on_opcao_pressed" binds= [1]]
 [connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnC" to="." method="_on_opcao_pressed" binds= [2]]
 [connection signal="pressed" from="UI/QuestionCard/VBoxContainer/Opcoes/BtnD" to="." method="_on_opcao_pressed" binds= [3]]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
